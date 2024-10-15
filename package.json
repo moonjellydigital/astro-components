@@ -1,0 +1,69 @@
+{
+  "name": "@moonjellydigital/astro-components",
+  "description": "A collection of accessible UI components for Astro",
+  "version": "0.1.0",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "author": "Camille Spain <camille@camillespain.com>",
+  "license": "MIT",
+  "keywords": [
+    "astro",
+    "astro components",
+    "astro component",
+    "ui components",
+    "ui library",
+    "accessible",
+    "accessibility",
+    "a11y",
+    "wcag",
+    "responsive"
+  ],
+  "homepage": "https://github.com/moonjellydigital/astro-components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonjellydigital/astro-components.git"
+  },
+  "scripts": {
+    "test": "echo \"Test script not implemented.\"",
+    "prepare": "husky || true",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "tsc:ci": "astro check",
+    "fmt:ci": "bunx prettier --check .",
+    "lint:ci": "bunx eslint ."
+  },
+  "lint-staged": {
+    "*.{json,yml,yaml,md}": "prettier --write",
+    "*.{ts,js}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.astro": "prettier --write"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/ts-plugin": "^1.10.2",
+    "@eslint/js": "^9.12.0",
+    "@moonjellydigital/prettier-config": "^1.0.0",
+    "@types/bun": "^1.1.11",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/eslint__js": "^8.42.3",
+    "@types/prettier": "^3.0.0",
+    "astro": "^4.16.5",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.11.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.8.1"
+  }
+}

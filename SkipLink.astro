@@ -1,0 +1,50 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'a'> {
+  href: string;
+  linkText: string;
+  id?: string;
+  className?: string;
+}
+
+const {
+  href,
+  linkText,
+  id = 'skip',
+  className = 'skip-link',
+  ...attrs
+} = Astro.props;
+---
+
+<a id={id} class={className} href={href} {...attrs}>
+  <div class={`${className}__state`}></div>
+  <div class={`${className}__content`}>{linkText}</div>
+</a>
+
+<style is:global>
+  a.skip-link {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    padding: 1rem;
+    background-color: white;
+    color: black;
+  }
+
+  a.skip-link:focus {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 65000;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    width: auto;
+    height: auto;
+  }
+</style>

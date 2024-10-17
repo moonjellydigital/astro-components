@@ -12,6 +12,50 @@ import { ComponentOne, ComponentTwo } from '@moonjellydigital/astro-components';
 ---
 ```
 
+### Component Structure
+
+The components in this package share some common properties and structure.
+
+Each component has a CSS class name that serves as a **namespace**. The namespace
+prevents styles from leaking into each other, since the included styles are global
+so that you can override them. Child HTML elements have class names that start with
+the component namespace, followed by two underscores and the element's name. The
+naming convention in this package works the same way as BEM.
+
+You can override the component namespace with your own by setting the `className`
+prop. You can also add a list of your own CSS classes to the component's outermost
+element by setting the `classList` prop. Note that if you override the namespace, the
+included styles won't be applied.
+
+The following code provides a stripped down example of how components are structured:
+
+```jsx
+---
+export interface Props {
+  className?: string;
+  classList?: string[];
+}
+
+const { className = 'example-component', classList = [] } = Astro.props;
+---
+
+<div class:list={[className, classList]}>
+  <div class={`${className}__content`}>
+    <slot />
+  </div>
+</div>
+
+<style is:global>
+  .example-component {
+    /* some CSS */
+  }
+
+  .example-component__content {
+    /* some CSS */
+  }
+</style>
+```
+
 ### Overriding Styles
 
 You can override a component's styles by using the `:global()` selector or a global
@@ -37,6 +81,8 @@ has a child element with the name `.skip-link__content`. If you supply the `clas
 prop with `my-link`, the outer HTML element will have the class `.my-link` and the
 inner element will have the class `.my-link__content`.
 
+**Note:** Overriding the component's class name means the included styles won't be applied.
+
 ## Components
 
 ### SkipLink
@@ -59,6 +105,7 @@ as props.
 ---
 import { SkipLink } from '@moonjellydigital/astro-components';
 ---
+
 <SkipLink href={"#main-content"} linkText={"Skip to main content"} />
 ```
 
@@ -74,6 +121,8 @@ interface Props extends HTMLAttributes<'a'> {
   id?: string;
   /** HTML class of the anchor element. default: 'skip-link' */
   className?: string;
+  /** Array of class names to add to the component. default: [] */
+  classList?: string[];
 }
 ```
 

@@ -6,6 +6,7 @@ export interface Props extends HTMLAttributes<'a'> {
   linkText: string;
   id?: string;
   className?: string;
+  classList?: string[];
 }
 
 const {
@@ -13,11 +14,12 @@ const {
   linkText,
   id = 'skip',
   className = 'skip-link',
+  classList = [],
   ...attrs
 } = Astro.props;
 ---
 
-<a id={id} class={className} href={href} {...attrs}>
+<a id={id} class:list={[className, classList]} href={href} {...attrs}>
   <div class={`${className}__state`}></div>
   <div class={`${className}__content`}>{linkText}</div>
 </a>

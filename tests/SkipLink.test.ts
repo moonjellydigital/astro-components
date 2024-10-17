@@ -1,5 +1,11 @@
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import { describe, test, expect } from 'vitest';
+import {
+  classList,
+  hasClassList,
+  classNamespace,
+  hasClassNamespace,
+} from './fixtures';
 import { SkipLink } from '..';
 
 describe('SkipLink', () => {
@@ -10,15 +16,17 @@ describe('SkipLink', () => {
         href: '#testing',
         linkText: 'Test text',
         id: 'test-id',
-        className: 'test-classname',
+        className: classNamespace,
+        classList: classList,
       },
     });
     expect(result).toContain('href="#testing"');
     expect(result).toContain('Test text');
     expect(result).toContain('id="test-id"');
-    expect(result).toContain('class="test-classname"');
-    expect(result).toContain('class="test-classname__content"');
-    expect(result).toContain('class="test-classname__state"');
+    expect(hasClassNamespace(result)).toBe(true);
+    expect(result).toContain(`class="${classNamespace}__content"`);
+    expect(result).toContain(`class="${classNamespace}__state"`);
+    expect(hasClassList(result)).toBe(true);
   });
 
   test('renders default values if none are provided', async () => {

@@ -5,6 +5,7 @@
  * @param {string} props.linkText
  * @param {string} [props.id=skip]
  * @param {string} [props.className=skip-link]
+ * @param {string[]} [props.classList=[]]
  * @param {...HTMLAttributes<'a'>} [props.attrs]
  * @returns {SkipLink}
  */

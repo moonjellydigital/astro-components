@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { HTMLClass } from './types/index.d.ts';
+
+type Tag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export interface Props extends HTMLClass, HTMLAttributes<Tag> {
+  Tag: Tag;
+  children: any;
+}
+
+const { Tag, className = 'heading', classList = [], ...attrs } = Astro.props;
+---
+
+<Tag class:list={[className, classList]} {...attrs} data-ac-type="Heading"
+  ><slot /></Tag
+>

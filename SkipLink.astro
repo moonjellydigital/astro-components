@@ -1,25 +1,27 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import type { HTMLClass } from './types/index.d.ts';
 
-export interface Props extends HTMLAttributes<'a'> {
+export interface Props extends HTMLClass, HTMLAttributes<'a'> {
   href: string;
   linkText: string;
-  id?: string;
-  className?: string;
-  classList?: string[];
 }
 
 const {
   href,
   linkText,
-  id = 'skip',
   className = 'skip-link',
   classList = [],
   ...attrs
 } = Astro.props;
 ---
 
-<a id={id} class:list={[className, classList]} href={href} {...attrs}>
+<a
+  class:list={[className, classList]}
+  href={href}
+  {...attrs}
+  data-ac-type="SkipLink"
+>
   <div class={`${className}__state`}></div>
   <div class={`${className}__content`}>{linkText}</div>
 </a>

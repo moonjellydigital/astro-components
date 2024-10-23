@@ -27,20 +27,43 @@ prop. You can also add a list of your own CSS classes to the component's outermo
 element by setting the `classList` prop. Note that if you override the namespace, the
 included styles won't be applied.
 
+The interface for the CSS class system looks like this:
+
+```typescript
+interface HTMLClass {
+  /** The CSS class namespace */
+  className?: string;
+  /** A list of CSS classes */
+  classList?: string[];
+}
+```
+
+Components' `data-ac-*` attributes are for JavaScript. All the included client-side
+scripts use data attributes, so that changing the CSS class namespace doesn't break
+them.
+
+Each component has a `data-ac-type` attribute with a value that matches its component
+name, even if it doesn't use any JavaScript. This makes it easier to debug in the
+browser developer tools if you've overridden the CSS class namespace.
+
+This package only uses the HTML id attribute to implement accessibility where required.
+
+You can add any attributes to the outermost HTML element that are supported by that tag
+type as props.
+
 The following code provides a stripped down example of how components are structured:
 
 ```jsx
 ---
-export interface Props {
-  className?: string;
-  classList?: string[];
+export interface Props extends HTMLClass, HTMLAttributes<'div'> {
+  ownProp: string;
 }
 
-const { className = 'example-component', classList = [] } = Astro.props;
+const { ownProp, className = 'example-component', classList = [], ...attrs } = Astro.props;
 ---
 
-<div class:list={[className, classList]}>
-  <div class={`${className}__content`}>
+<div class:list={[className, classList]} data-ac-type="ExampleComponent" {...attrs}>
+  <div class={`${className}__content`} data-ac-prop={ownProp}>
     <slot />
   </div>
 </div>
@@ -76,7 +99,7 @@ Each component has a `className` prop that will set your name on the component's
 outermost element and replace the block level portion of the class name on the
 component's inner elements.
 
-For example, the default class name of the SkipLink component is `.skip-link` and it
+For example, the default class name of the `SkipLink` component is `.skip-link` and it
 has a child element with the name `.skip-link__content`. If you supply the `className`
 prop with `my-link`, the outer HTML element will have the class `.my-link` and the
 inner element will have the class `.my-link__content`.
@@ -85,16 +108,47 @@ inner element will have the class `.my-link__content`.
 
 ## Components
 
-### SkipLink
+### `Heading`
 
-SkipLink can be used to give users a way to skip past content that is repeated
+`Heading` is a polymorphic component that can render `h1` through `h6` elements. You can
+use it inside other components to dynamically set the heading level for component
+instances using prop threading. This makes your component more reusable, accessible, and
+SEO-friendly.
+
+`Heading` uses [Astro's dynamic tags](https://docs.astro.build/en/basics/astro-syntax/#dynamic-tags)
+feature, so it can't be used with `client:*` hydration directives.
+
+#### Basic Usage
+
+```jsx
+---
+import { Heading } from '@moonjellydigital/astro-components';
+---
+
+<Heading Tag={'h2'}>My Heading</Heading>
+```
+
+#### Props
+
+```typescript
+interface Props
+  extends HTMLClass,
+    HTMLAttributes<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'> {
+  Tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  children: any;
+}
+```
+
+### `SkipLink`
+
+`SkipLink` can be used to give users a way to skip past content that is repeated
 on multiple pages. The provided styles are designed to be optimal for the most
 common use case, a link at the top of the page that goes to the main content.
 Some re-styling of the focus state may be required for [technique G123](https://www.w3.org/WAI/WCAG21/Techniques/general/G123), jumping
 from the beginning to the end of a block of content, and [technique G124](https://www.w3.org/WAI/WCAG21/Techniques/general/G124), adding
 links at the top of the page to multiple content areas.
 
-SkipLink does not load any JavaScript on the client.
+`SkipLink` does not load any JavaScript on the client.
 
 You can add any HTML attributes supported by the `HTMLAttributes<'a'>` type
 as props.
@@ -112,17 +166,11 @@ import { SkipLink } from '@moonjellydigital/astro-components';
 #### Props
 
 ```typescript
-interface Props extends HTMLAttributes<'a'> {
+interface Props extends HTMLClass, HTMLAttributes<'a'> {
   /** Where to jump to on the page. */
   href: string;
   /** The link text the user will read. */
   linkText: string;
-  /** HTML id of the anchor element. default: 'skip' */
-  id?: string;
-  /** HTML class of the anchor element. default: 'skip-link' */
-  className?: string;
-  /** Array of class names to add to the component. default: [] */
-  classList?: string[];
 }
 ```
 

@@ -21,7 +21,6 @@ describe('SkipLink', () => {
     });
     expect(hasClassNamespace(result)).toBe(true);
     expect(result).toContain(`class="${classNamespace}__content"`);
-    expect(result).toContain(`class="${classNamespace}__state"`);
     expect(hasClassList(result)).toBe(true);
   });
 
@@ -47,7 +46,6 @@ describe('SkipLink', () => {
     });
     expect(result).toContain('class="skip-link"');
     expect(result).toContain('class="skip-link__content"');
-    expect(result).toContain('class="skip-link__state"');
   });
 
   test('implements HTMLAttributes<"a"> interface', async () => {

@@ -5,10 +5,17 @@ export interface HTMLClass {
   classList?: string[];
 }
 
+export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export type NonSemanticTag = 'div' | 'span';
+
 /**
  * Heading (h1 - h6) component.
  * @param {Record<string, any>} props
- * @param {string} props.Tag The heading tag to render. Can be one of 'h1', 'h2', 'h3', 'h4', 'h5', or 'h6'.
+ * @param {HeadingTag} props.Tag The heading tag to render. Can be one of 'h1', 'h2', 'h3', 'h4', 'h5', or 'h6'.
+ * @param {HTMLClass.className} [props.className=heading]
+ * @param {HTMLClass.classList} [props.classList=[]]
+ * @param {...HTMLAttributes<HeadingTag>} [props.attrs]
  * @returns {Heading}
  */
 type Heading = typeof import('../index.js').Heading;
@@ -26,3 +33,15 @@ export const Heading: Heading;
  */
 type SkipLink = typeof import('../index.js').SkipLink;
 export const SkipLink: SkipLink;
+
+/**
+ * State layer component.
+ * @param {Record<string, any>} props
+ * @param {NonSemanticTag} props.Tag The HTML tag to render. Can be one of 'div' or 'span'.
+ * @param {HTMLClass.className} [props.className=state-layer]
+ * @param {HTMLClass.classList} [props.classList=[]]
+ * @param {...HTMLAttributes<NonSemanticTag>} [props.attrs]
+ * @returns {StateLayer}
+ */
+type StateLayer = typeof import('../index.js').StateLayer;
+export const StateLayer: StateLayer;

@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import type { HTMLClass } from './types/index.d.ts';
+import { StateLayer } from '.';
 
 export interface Props extends HTMLClass, HTMLAttributes<'a'> {
   href: string;
@@ -22,7 +23,7 @@ const {
   {...attrs}
   data-ac-type="SkipLink"
 >
-  <div class={`${className}__state`}></div>
+  <StateLayer Tag={'div'} />
   <div class={`${className}__content`}>{linkText}</div>
 </a>
 

@@ -174,6 +174,36 @@ interface Props extends HTMLClass, HTMLAttributes<'a'> {
 }
 ```
 
+### `StateLayer`
+
+`StateLayer` is a polymorphic component that can render as either a `div` or a `span`.
+You can use it in designs that call for a visual indicator of state in interactive
+components like buttons and menu items. Using `StateLayer` instead of a bare `div`
+or `span` tag provides better semantics for developers and can help keep state layer
+styling more consistent across components.
+
+`StateLayer` uses [Astro's dynamic tags](https://docs.astro.build/en/basics/astro-syntax/#dynamic-tags)
+feature, so it can't be used with `client:*` hydration directives.
+
+#### Basic Usage
+
+```jsx
+---
+import { StateLayer } from '@moonjellydigital/astro-components';
+---
+
+<StateLayer Tag={'span'} />
+```
+
+#### Props
+
+```typescript
+interface Props extends HTMLClass, HTMLAttributes<'div' | 'span'> {
+  /** Which HTML tag to render. */
+  Tag: 'div' | 'span';
+}
+```
+
 ## License
 
 [MIT](./LICENSE)

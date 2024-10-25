@@ -1,0 +1,28 @@
+---
+import type { HTMLClass } from './types/index.d.ts';
+import type { HTMLAttributes } from 'astro/types';
+import { StateLayer } from '.';
+
+export interface Props extends HTMLClass, HTMLAttributes<'button'> {
+  ariaPressed: 'true' | 'false' | 'mixed';
+  children: any;
+}
+
+const {
+  ariaPressed,
+  className = 'toggle-button',
+  classList = [],
+  ...attrs
+} = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={[className, classList]}
+  data-ac-type="ToggleButton"
+  aria-pressed={ariaPressed}
+  {...attrs}
+>
+  <StateLayer Tag={'span'} />
+  <slot />
+</button>

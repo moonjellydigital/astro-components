@@ -237,6 +237,38 @@ interface Props extends HTMLClass, HTMLAttributes<'div' | 'span'> {
 }
 ```
 
+### `ToggleButton`
+
+`ToggleButton` can be used in components that require a toggle button, like a
+dark mode or mute button. The necessary attributes for a toggle button are
+available as props. You can also set any additional ARIA or button element
+attributes you might need.
+
+`ToggleButton` uses a native `<button>` element.
+
+#### Basic Usage
+
+```jsx
+---
+import { ToggleButton } from '@moonjellydigital/astro-components';
+---
+
+<ToggleButton ariaPressed={'false'}>
+  Dark Mode
+</DisclosureButton>
+```
+
+#### Props
+
+```typescript
+interface Props extends HTMLClass, HTMLAttributes<'button'> {
+  /** The initial state of the expandable element this button controls. */
+  ariaPressed: 'true' | 'false' | 'mixed';
+  /** Default slot. */
+  children: any;
+}
+```
+
 ## License
 
 [MIT](./LICENSE)

@@ -59,3 +59,15 @@ export const SkipLink: SkipLink;
  */
 type StateLayer = typeof import('../index.js').StateLayer;
 export const StateLayer: StateLayer;
+
+/**
+ * Toggle pattern button component.
+ * @param {Record<string, any>} props
+ * @param {string} props.ariaPressed The aria-pressed state to initialize with. Can be 'true', 'false', or 'mixed'.
+ * @param {any} props.children Default slot children.
+ * @param {HTMLClass.className} [props.className=toggle-button]
+ * @param {HTMLClass.classList} [props.classList=[]]
+ * @param {...HTMLAttributes<'button'>} [props.attrs]
+ */
+type ToggleButton = typeof import('../index.js').ToggleButton;
+export const ToggleButton: ToggleButton;

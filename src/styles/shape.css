@@ -1,0 +1,9 @@
+:root {
+  --md-sys-shapescale-none: 0;
+  --md-sys-shapescale-extra-small: 4px;
+  --md-sys-shapescale-small: 8px;
+  --md-sys-shapescale-medium: 16px;
+  --md-sys-shapescale-large: 20px;
+  --md-sys-shapescale-extra-large: 24px;
+  --md-sys-shapescale-full: 100%;
+}

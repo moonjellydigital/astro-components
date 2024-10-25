@@ -49,6 +49,7 @@
       "prettier --write",
       "eslint --fix"
     ],
+    "*.css": "prettier --write",
     "*.astro": "prettier --write"
   },
   "type": "module",

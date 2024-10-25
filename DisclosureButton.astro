@@ -1,0 +1,31 @@
+---
+import type { HTMLClass } from './types/index.d.ts';
+import type { HTMLAttributes } from 'astro/types';
+import { StateLayer } from '.';
+
+export interface Props extends HTMLClass, HTMLAttributes<'button'> {
+  ariaExpanded: 'true' | 'false';
+  children: any;
+  ariaControls?: string | null;
+}
+
+const {
+  ariaExpanded,
+  ariaControls = null,
+  className = 'disclosure-button',
+  classList = [],
+  ...attrs
+} = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={[className, classList]}
+  data-ac-type="DisclosureButton"
+  aria-expanded={ariaExpanded}
+  aria-controls={ariaControls !== null ? ariaControls : null}
+  {...attrs}
+>
+  <StateLayer Tag={'span'} />
+  <slot />
+</button>

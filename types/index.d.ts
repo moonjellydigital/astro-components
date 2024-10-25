@@ -10,9 +10,23 @@ export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type NonSemanticTag = 'div' | 'span';
 
 /**
+ * Disclosure pattern button component.
+ * @param {Record<string, any>} props
+ * @param {string} props.ariaExpanded The aria-expanded state to initialize with. Can be 'true' or 'false'.
+ * @param {any} props.children Default slot children.
+ * @param {string | null} [props.ariaControls=null]
+ * @param {HTMLClass.className} [props.className=disclosure-button]
+ * @param {HTMLClass.classList} [props.classList=[]]
+ * @param {...HTMLAttributes<'button'>} [props.attrs]
+ */
+type DisclosureButton = typeof import('../index.js').DisclosureButton;
+export const DisclosureButton: DisclosureButton;
+
+/**
  * Heading (h1 - h6) component.
  * @param {Record<string, any>} props
  * @param {HeadingTag} props.Tag The heading tag to render. Can be one of 'h1', 'h2', 'h3', 'h4', 'h5', or 'h6'.
+ * @param {any} props.children Default slot children.
  * @param {HTMLClass.className} [props.className=heading]
  * @param {HTMLClass.classList} [props.classList=[]]
  * @param {...HTMLAttributes<HeadingTag>} [props.attrs]

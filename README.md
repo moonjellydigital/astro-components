@@ -108,6 +108,39 @@ inner element will have the class `.my-link__content`.
 
 ## Components
 
+### `DisclosureButton`
+
+`DisclosureButton` can be used in components that implement the [disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/).
+The required attributes for a disclosure button are available as props. You can also
+set any additional ARIA or button element attributes you might need.
+
+`DisclosureButton` uses a native `<button>` element.
+
+#### Basic Usage
+
+```jsx
+---
+import { DisclosureButton } from '@moonjellydigital/astro-components';
+---
+
+<DisclosureButton ariaExpanded={'false'} ariaControls={'myAccordionPanel1'}>
+  Accordion Panel 1
+</DisclosureButton>
+```
+
+#### Props
+
+```typescript
+interface Props extends HTMLClass, HTMLAttributes<'button'> {
+  /** The initial state of the expandable element this button controls. */
+  ariaExpanded: 'true' | 'false';
+  /** Default slot. */
+  children: any;
+  /** The `id` of the element the button controls. */
+  ariaControls?: string | null;
+}
+```
+
 ### `Heading`
 
 `Heading` is a polymorphic component that can render `h1` through `h6` elements. You can

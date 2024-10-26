@@ -3,6 +3,7 @@
 @import url('./shape.css');
 @import url('./state.css');
 @import url('./elevation.css');
+@import url('./spacing.css');
 @import url('./light.css');
 
 html *,
@@ -19,4 +20,67 @@ body {
   font-size: var(--md-sys-typescale-body-large-size);
   font-weight: var(--md-sys-typescale-body-large-weight);
   line-height: var(--md-sys-typescale-body-large-line-height);
+}
+
+h1 {
+  font-family: var(--md-sys-typescale-display-large-font);
+  font-weight: var(--md-sys-typescale-display-large-weight);
+  font-size: var(--md-sys-typescale-display-large-size);
+  line-height: var(--md-sys-typescale-display-large-line-height);
+  margin-top: var(--spacing-16);
+  margin-bottom: 0;
+}
+
+h2 {
+  font-family: var(--md-sys-typescale-display-medium-font);
+  font-weight: var(--md-sys-typescale-display-medium-weight);
+  font-size: var(--md-sys-typescale-display-medium-size);
+  line-height: var(--md-sys-typescale-display-medium-line-height);
+  margin-top: var(--spacing-16);
+  margin-bottom: 0;
+}
+
+h3 {
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  font-size: var(--md-sys-typescale-display-small-size);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+  margin-top: var(--spacing-16);
+  margin-bottom: 0;
+}
+
+h4 {
+  font-family: var(--md-sys-typescale-headline-large-font);
+  font-weight: var(--md-sys-typescale-headline-large-weight);
+  font-size: var(--md-sys-typescale-headline-large-size);
+  line-height: var(--md-sys-typescale-headline-large-line-height);
+  margin-top: var(--spacing-16);
+  margin-bottom: 0;
+}
+
+h5 {
+  font-family: var(--md-sys-typescale-headline-medium-font);
+  font-weight: var(--md-sys-typescale-headline-medium-weight);
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  line-height: var(--md-sys-typescale-headline-medium-line-height);
+  margin-top: var(--spacing-16);
+  margin-bottom: 0;
+}
+
+h6 {
+  font-family: var(--md-sys-typescale-headline-small-font);
+  font-weight: var(--md-sys-typescale-headline-small-weight);
+  font-size: var(--md-sys-typescale-headline-small-size);
+  line-height: var(--md-sys-typescale-headline-small-line-height);
+  margin-top: var(--spacing-16);
+  margin-bottom: 0;
+}
+
+p,
+ol,
+ul,
+li,
+blockquote {
+  margin-top: var(--spacing-16);
+  margin-bottom: 0;
 }

@@ -20,6 +20,8 @@ body {
   font-size: var(--md-sys-typescale-body-large-size);
   font-weight: var(--md-sys-typescale-body-large-weight);
   line-height: var(--md-sys-typescale-body-large-line-height);
+  overflow-wrap: break-word;
+  hyphens: manual;
 }
 
 h1 {
@@ -80,7 +82,11 @@ p,
 ol,
 ul,
 li,
-blockquote {
+blockquote,
+figure,
+figcaption,
+pre,
+details {
   margin-top: var(--spacing-16);
   margin-bottom: 0;
 }

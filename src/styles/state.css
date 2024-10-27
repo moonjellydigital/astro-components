@@ -2,5 +2,5 @@
   --md-sys-state-layer-opacity-hover: 0.08;
   --md-sys-state-layer-opacity-focus: 0.12;
   --md-sys-state-layer-opacity-pressed: 0.16;
-  --md-sys-state-layer-color: currentColor;
+  --md-sys-state-layer-color: currentcolor;
 }

@@ -6,7 +6,10 @@
   "files": [
     "./index.js",
     "./SkipLink.astro",
-    "./Heading.astro"
+    "./Heading.astro",
+    "./StateLayer.astro",
+    "./DisclosureButton.astro",
+    "./ToggleButton.astro"
   ],
   "types": "./types/index.d.ts",
   "publishConfig": {
@@ -41,7 +44,8 @@
     "preview": "astro preview",
     "tsc:ci": "astro check",
     "fmt:ci": "bunx prettier --check .",
-    "lint:ci": "bunx eslint ."
+    "lint:js:ci": "bunx eslint .",
+    "lint:css:ci": "bunx stylelint **/*.css"
   },
   "lint-staged": {
     "*.{json,yml,yaml,md}": "prettier --write",
@@ -49,7 +53,10 @@
       "prettier --write",
       "eslint --fix"
     ],
-    "*.css": "prettier --write",
+    "*.css": [
+      "prettier --write",
+      "stylelint --fix"
+    ],
     "*.astro": "prettier --write"
   },
   "type": "module",
@@ -58,7 +65,7 @@
     "@astrojs/ts-plugin": "^1.10.2",
     "@eslint/js": "^9.12.0",
     "@moonjellydigital/prettier-config": "^1.0.0",
-    "@types/bun": "^1.1.11",
+    "@types/bun": "latest",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/eslint__js": "^8.42.3",
     "@types/prettier": "^3.0.0",
@@ -72,6 +79,8 @@
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.8.1",
     "vitest": "^2.1.3"

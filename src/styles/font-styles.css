@@ -1,5 +1,6 @@
 :root {
   --font-family-primary: 'NotoSans', sans-serif;
+  --font-family-primary-italic: 'NotoSansItalic', sans-serif;
   --font-family-code: 'NotoSansMono', monospace;
   --md-sys-typescale-display-large-font: var(--font-family-primary);
   --md-sys-typescale-display-large-weight: 400;
@@ -62,7 +63,7 @@
   --md-sys-typescale-label-small-size: 0.6875rem;
   --md-sys-typescale-label-small-line-height: 1.5;
   --md-sys-typescale-code-font: var(--font-family-code);
-  --md-sys-typescale-code-weight: 400;
+  --md-sys-typescale-code-weight: 500;
   --md-sys-typescale-code-size: 1rem;
   --md-sys-typescale-code-line-height: 1.5;
 }

@@ -7,14 +7,14 @@
 @import url('./light.css');
 
 html *,
-html *:before,
-html *:after {
+html *::before,
+html *::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background-color: var(--md-sys-color-surface);
+  background-color: var(--md-sys-color-surface-container-lowest);
   color: var(--md-sys-color-on-surface);
   font-family: var(--md-sys-typescale-body-large-font);
   font-size: var(--md-sys-typescale-body-large-size);
@@ -106,4 +106,26 @@ small {
 
 hr {
   border-color: var(--md-sys-color-outline-variant);
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+i,
+em,
+q {
+  font-family: var(--font-family-primary-italic);
+}
+
+code,
+kbd,
+samp,
+var {
+  font-family: var(--md-sys-typescale-code-font);
+  font-weight: var(--md-sys-typescale-code-weight);
+  font-size: var(--md-sys-typescale-code-size);
+  line-height: var(--md-sys-typescale-code-line-height);
+  font-style: normal;
 }

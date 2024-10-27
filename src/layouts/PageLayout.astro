@@ -1,0 +1,81 @@
+---
+import { SkipLink } from '../../index.js';
+---
+
+<SkipLink href={'#main-content'} linkText={'Skip to main content'} />
+<style is:global>
+  a.skip-link {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    box-shadow: var(--md-sys-elevation-2-shadow);
+    border-radius: var(--md-sys-shapescale-extra-small);
+  }
+
+  a.skip-link .state-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  a.skip-link:hover .state-layer {
+    background-color: var(--md-sys-state-layer-color);
+    opacity: var(--md-sys-state-layer-opacity-hover);
+  }
+
+  a.skip-link:focus .state-layer {
+    background-color: var(--md-sys-state-layer-color);
+    opacity: var(--md-sys-state-layer-opacity-focus);
+  }
+
+  a.skip-link:active .state-layer {
+    background-color: var(--md-sys-state-layer-color);
+    opacity: var(--md-sys-state-layer-opacity-pressed);
+  }
+</style>
+<div class="page">
+  <header class="page__header"></header>
+  <main id="main-content" class="page__content">
+    <slot />
+  </main>
+  <footer class="page__footer">
+    <hr />
+    <small>© 2024 @moonjellydigital/astro-components Contributors </small>
+  </footer>
+</div>
+<style>
+  .page__content {
+    padding: var(--spacing-fluid-16-24);
+  }
+
+  .page__footer {
+    padding: var(--spacing-fluid-16-24);
+  }
+
+  @media (min-width: 648px) {
+    .page {
+      display: grid;
+      grid-template-columns: 8rem 1fr;
+    }
+
+    .page__header {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 3;
+      background-color: var(--md-sys-color-surface-variant);
+    }
+
+    .page__content {
+      grid-column-start: 2;
+      grid-column-end: 3;
+    }
+
+    .page__footer {
+      grid-column-start: 2;
+      grid-column-end: 3;
+    }
+  }
+</style>

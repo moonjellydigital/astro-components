@@ -129,3 +129,27 @@ var {
   line-height: var(--md-sys-typescale-code-line-height);
   font-style: normal;
 }
+
+.state-layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+a:hover .state-layer,
+button:hover .state-layer {
+  background-color: var(--md-sys-state-layer-color);
+  opacity: var(--md-sys-state-layer-opacity-hover);
+}
+
+a:focus .state-layer,
+button:focus .state-layer {
+  background-color: var(--md-sys-state-layer-color);
+  opacity: var(--md-sys-state-layer-opacity-focus);
+}
+
+a:active .state-layer,
+button:active .state-layer {
+  background-color: var(--md-sys-state-layer-color);
+  opacity: var(--md-sys-state-layer-opacity-pressed);
+}

@@ -10,6 +10,20 @@ export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type NonSemanticTag = 'div' | 'span';
 
 /**
+ * Back to top component.
+ * @param {Record<string, any>} props
+ * @param {any} props.children Default slot children.
+ * @param {string} [props.href=#top] The id to scroll to.
+ * @param {number} [props.scrollDepth=1.5] Number of viewport heights from top of page before component is visible.
+ * @param {number} [props.throttleInterval=100] The scroll handler throttle interval in milliseconds.
+ * @param {HTMLClass.className} [props.className=back-to-top]
+ * @param {HTMLClass.classList} [props.classList=[]]
+ * @param {...HTMLAttributes<'a'>} [props.attrs]
+ */
+type BackToTop = typeof import('../index.js').BackToTop;
+export const BackToTop: BackToTop;
+
+/**
  * Disclosure pattern button component.
  * @param {Record<string, any>} props
  * @param {string} props.ariaExpanded The aria-expanded state to initialize with. Can be 'true' or 'false'.

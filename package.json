@@ -9,7 +9,8 @@
     "./Heading.astro",
     "./StateLayer.astro",
     "./DisclosureButton.astro",
-    "./ToggleButton.astro"
+    "./ToggleButton.astro",
+    "./BackToTop.astro"
   ],
   "types": "./types/index.d.ts",
   "publishConfig": {

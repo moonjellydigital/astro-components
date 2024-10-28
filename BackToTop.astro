@@ -1,0 +1,146 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { HTMLClass } from './types/index.d.ts';
+import { StateLayer } from '.';
+
+export interface Props extends HTMLClass, HTMLAttributes<'a'> {
+  children: any;
+  href?: string;
+  scrollDepth?: number;
+  throttleInterval?: number;
+}
+
+const {
+  href = '#top',
+  scrollDepth = 1.5,
+  throttleInterval = 100,
+  className = 'back-to-top',
+  classList = [],
+  ...attrs
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[className, classList]}
+  data-ac-type="BackToTop"
+  data-ac-visible="false"
+  data-ac-scroll-depth={scrollDepth}
+  data-ac-throttle-intvl={throttleInterval}
+  {...attrs}
+>
+  <StateLayer Tag={'span'} />
+  <slot />
+</a>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  .back-to-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    z-index: 65000;
+  }
+
+  .back-to-top[data-ac-visible='false'] {
+    pointer-events: none;
+    opacity: 0.01;
+    transition: opacity 0.5s ease-out;
+  }
+
+  .back-to-top[data-ac-visible='true'] {
+    pointer-events: all;
+    opacity: 1;
+    transition: opacity 300ms ease-out;
+  }
+</style>
+
+<script>
+  import { throttle } from 'throttle-debounce';
+
+  class AcBackToTop {
+    #scrollButton: HTMLElement | null;
+    #throttleIntvl: number | string | undefined;
+    #scrollDepth: number | string | undefined;
+    #toggleHeight: number | undefined;
+    #status: 'ok' | 'err' | undefined;
+    #errMessage: Error | undefined;
+
+    constructor() {
+      this.#scrollButton = null;
+      this.#throttleIntvl = undefined;
+      this.#scrollDepth = undefined;
+      this.#toggleHeight = undefined;
+      this.#status = undefined;
+      this.#errMessage = undefined;
+
+      this.#setup();
+    }
+
+    #setup() {
+      this.#scrollButton = document.querySelector(
+        '[data-ac-type="BackToTop"]',
+      ) as HTMLElement | null;
+
+      if (!this.#scrollButton) {
+        this.#status = 'err';
+        this.#errMessage = new Error(
+          'The element with selector [data-ac-type="BackToTop"] could not be found.',
+        );
+      }
+
+      if (this.#status !== 'err' && this.#scrollButton) {
+        this.#throttleIntvl =
+          this.#scrollButton.dataset?.acThrottleIntvl || 100;
+        this.#scrollDepth = this.#scrollButton.dataset?.acScrollDepth || 1.5;
+        this.#toggleHeight = window.innerHeight * Number(this.#scrollDepth);
+        window.addEventListener('scroll', this.#toggleVisibility(), {
+          passive: true,
+        });
+        this.#status = 'ok';
+      }
+    }
+
+    #toggleVisibility() {
+      return throttle(Number(this.#throttleIntvl), () => {
+        if (this.#toggleHeight === undefined || !this.#scrollButton) {
+          return;
+        }
+
+        if (window.scrollY >= this.#toggleHeight) {
+          this.#scrollButton.dataset.acVisible = 'true';
+        } else {
+          this.#scrollButton.dataset.acVisible = 'false';
+        }
+      });
+    }
+
+    get status(): string | undefined {
+      return this.#status;
+    }
+
+    get errMessage(): Error | undefined {
+      return this.#errMessage;
+    }
+  }
+
+  const acBackToTop = new AcBackToTop();
+
+  if (acBackToTop.status === 'err') {
+    console.error(acBackToTop.errMessage);
+  }
+</script>

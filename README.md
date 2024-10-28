@@ -108,6 +108,40 @@ inner element will have the class `.my-link__content`.
 
 ## Components
 
+### `BackToTop`
+
+`BackToTop` takes users back to the top of the page.
+
+#### Basic Usage
+
+```jsx
+---
+import { BackToTop } from '@moonjellydigital/astro-components';
+---
+
+<BackToTop>
+  <div>
+    <span aria-hidden="true" class="my-icon"><!-- icon stuff --></span>
+    <span class="sr-only">Back to top of page</span>
+  </div>
+</BackToTop>
+```
+
+#### Props
+
+```typescript
+interface Props extends HTMLClass, HTMLAttributes<'a'> {
+  /** Default slot */
+  children: any;
+  /** Id to scroll to. default: #top */
+  href?: string;
+  /** Number of viewport heights the user needs to scroll before the component is visible. default: 1.5 */
+  scrollDepth?: number;
+  /** Number of milliseconds to throttle the scroll handler function to. default: 100 */
+  throttleInterval?: number;
+}
+```
+
 ### `DisclosureButton`
 
 `DisclosureButton` can be used in components that implement the [disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/).

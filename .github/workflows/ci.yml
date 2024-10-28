@@ -11,6 +11,7 @@ jobs:
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
+      - run: bun run build:modules
       - run: bun run tsc:ci
       - run: bun run fmt:ci
       - run: bun run lint:js:ci
@@ -23,4 +24,5 @@ jobs:
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
+      - run: bun run build:modules
       - run: bun run test

@@ -200,3 +200,6 @@ coverage
 
 # Sass Cache
 .sass-cache
+
+# JS module dist directory
+modules/

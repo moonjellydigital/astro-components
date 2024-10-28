@@ -1,0 +1,16 @@
+{
+  "include": ["./module-src/**/*"],
+  "exclude": ["*/node_modules/**/*", "*/tests/**/*", "**/*.test.ts", "./*.ts"],
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "skipLibCheck": true,
+    "declaration": true,
+    "outDir": "modules",
+    "declarationMap": true,
+    "verbatimModuleSyntax": false,
+    "noUnusedParameters": true
+  }
+}

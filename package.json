@@ -5,6 +5,9 @@
   "main": "./index.js",
   "files": [
     "./index.js",
+    "./modules/**/*.ts",
+    "./modules/**/*.map",
+    "./modules/**/*.js",
     "./SkipLink.astro",
     "./Heading.astro",
     "./StateLayer.astro",
@@ -46,7 +49,8 @@
     "tsc:ci": "astro check",
     "fmt:ci": "bunx prettier --check .",
     "lint:js:ci": "bunx eslint .",
-    "lint:css:ci": "bunx stylelint **/*.css"
+    "lint:css:ci": "bunx stylelint **/*.css",
+    "build:modules": "bunx tsc --build tsconfig.build.json"
   },
   "lint-staged": {
     "*.{json,yml,yaml,md}": "prettier --write",

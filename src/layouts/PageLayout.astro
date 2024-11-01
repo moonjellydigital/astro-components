@@ -1,5 +1,6 @@
 ---
 import { SkipLink } from '../../index.js';
+import { BackToTop } from '../../index.js';
 ---
 
 <SkipLink href={'#main-content'} linkText={'Skip to main content'} />
@@ -10,30 +11,6 @@ import { SkipLink } from '../../index.js';
     box-shadow: var(--md-sys-elevation-2-shadow);
     border-radius: var(--md-sys-shapescale-extra-small);
   }
-
-  a.skip-link .state-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-  }
-
-  a.skip-link:hover .state-layer {
-    background-color: var(--md-sys-state-layer-color);
-    opacity: var(--md-sys-state-layer-opacity-hover);
-  }
-
-  a.skip-link:focus .state-layer {
-    background-color: var(--md-sys-state-layer-color);
-    opacity: var(--md-sys-state-layer-opacity-focus);
-  }
-
-  a.skip-link:active .state-layer {
-    background-color: var(--md-sys-state-layer-color);
-    opacity: var(--md-sys-state-layer-opacity-pressed);
-  }
 </style>
 <div class="page">
   <header class="page__header"></header>
@@ -41,10 +18,28 @@ import { SkipLink } from '../../index.js';
     <slot />
   </main>
   <footer class="page__footer">
+    <BackToTop>
+      <div>
+        <div aria-hidden="true" style="display:flex;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="currentColor"
+            ><path
+              d="M450-332.31h60.38v-182.23l74 74 41.77-41.77-145.77-145.77-146.15 145.77L376-440.54l74-74v182.23ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+            ></path></svg
+          >
+        </div>
+        <span class="sr-only">Back to top of page</span>
+      </div>
+    </BackToTop>
     <hr />
     <small>© 2024 @moonjellydigital/astro-components Contributors </small>
   </footer>
 </div>
+
 <style>
   .page__content {
     padding: var(--spacing-fluid-16-24);
@@ -52,6 +47,16 @@ import { SkipLink } from '../../index.js';
 
   .page__footer {
     padding: var(--spacing-fluid-16-24);
+  }
+
+  .back-to-top {
+    border-radius: var(--md-sys-shapescale-full);
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    overflow: hidden;
+    box-shadow: var(--md-sys-elevation-1-shadow);
+    right: var(--spacing-fluid-16-24);
+    bottom: var(--spacing-fluid-16-24);
   }
 
   @media (min-width: 648px) {

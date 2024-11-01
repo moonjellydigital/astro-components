@@ -85,10 +85,15 @@ li,
 blockquote,
 figure,
 figcaption,
-pre,
 details {
   margin-top: var(--spacing-16);
   margin-bottom: 0;
+}
+
+pre {
+  margin-top: var(--spacing-16);
+  margin-bottom: 0;
+  overflow-x: scroll;
 }
 
 a:link,
@@ -152,4 +157,14 @@ a:active .state-layer,
 button:active .state-layer {
   background-color: var(--md-sys-state-layer-color);
   opacity: var(--md-sys-state-layer-opacity-pressed);
+}
+
+.sr-only:not(:focus, :active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

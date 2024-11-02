@@ -13,7 +13,8 @@
     "./StateLayer.astro",
     "./DisclosureButton.astro",
     "./ToggleButton.astro",
-    "./BackToTop.astro"
+    "./BackToTop.astro",
+    "./Icon.astro"
   ],
   "types": "./types/index.d.ts",
   "publishConfig": {

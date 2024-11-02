@@ -206,6 +206,38 @@ interface Props
 }
 ```
 
+### `Icon`
+
+`Icon` can be used to make icon components with your own SVGs or images. `Icon`
+instances and their child elements are hidden from AT (accessibility technology)
+by default, using `aria-hidden`. The `aria-hidden` attribute can be set to false
+with the `ariaHidden` prop in the unlikely event you need to.
+
+You can add any HTML attributes supported by the `span` tag as props.
+
+#### Basic Usage
+
+```jsx
+---
+import { Icon } from '@moonjellydigital/astro-components';
+---
+
+<Icon>
+  <!-- Your SVG here -->
+</Icon>
+```
+
+#### Props
+
+```typescript
+interface Props extends HTMLClass, HTMLAttributes<'span'> {
+  /** Whether to hide the element and its children from AT. Default: 'true' */
+  ariaHidden?: 'true' | 'false';
+  /** Default slot children. */
+  children: any;
+}
+```
+
 ### `SkipLink`
 
 `SkipLink` can be used to give users a way to skip past content that is repeated

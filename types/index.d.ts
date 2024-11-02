@@ -50,6 +50,19 @@ type Heading = typeof import('../index.js').Heading;
 export const Heading: Heading;
 
 /**
+ * Icon component
+ * @param {Record<string, any>} props
+ * @param {'true' | 'false'} [props.ariaHidden='true'] The value of aria-hidden. Can be one of 'true' or 'false'.
+ * @param {any} props.children Default slot children.
+ * @param {HTMLClass.className} [props.className=heading]
+ * @param {HTMLClass.classList} [props.classList=[]]
+ * @param {...HTMLAttributes<div>} [props.attrs]
+ * @returns {Icon}
+ */
+type Icon = typeof import('../index.js').Icon;
+export const Icon: Icon;
+
+/**
  * Skip link component.
  * @param {Record<string, any>} props
  * @param {string} props.href

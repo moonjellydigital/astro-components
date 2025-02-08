@@ -78,7 +78,7 @@
     "@types/prettier": "^3.0.0",
     "@types/throttle-debounce": "^5.0.2",
     "astro": "5.2.5",
-    "esbuild": "^0.24.2",
+    "esbuild": "^0.25.0",
     "eslint": "^9.20.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jsdoc": "^50.6.3",
@@ -91,7 +91,7 @@
     "stylelint-config-standard": "^37.0.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.23.0",
-    "vitest": "3.0.0-beta.3"
+    "vitest": "3.0.5"
   },
   "dependencies": {
     "throttle-debounce": "^5.0.2"

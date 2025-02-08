@@ -7,7 +7,7 @@ import globals from 'globals';
 import jsdoc from 'eslint-plugin-jsdoc';
 
 export default tseslint.config(
-  { ignores: ['**/env.d.ts', '**/modules/**/*'] },
+  { ignores: ['**/env.d.ts', '**/modules/**/*', '**/.astro/**/*'] },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   jsdoc.configs['flat/recommended-typescript'],

@@ -14,7 +14,8 @@
     "./DisclosureButton.astro",
     "./ToggleButton.astro",
     "./BackToTop.astro",
-    "./Icon.astro"
+    "./Icon.astro",
+    "./types/index.d.ts"
   ],
   "types": "./types/index.d.ts",
   "publishConfig": {
